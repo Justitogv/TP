@@ -1,6 +1,7 @@
-package Prueba;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Agenda {
     private String nombre;
@@ -8,7 +9,7 @@ public class Agenda {
 
     public Agenda(String nombre) {
         this.nombre = nombre;
-        this.notas = new ArrayList<>();
+        this.nota = new ArrayList<>();
     }
 
 
@@ -35,14 +36,14 @@ public class Agenda {
     public void listarNotas(){
         System.out.println("*****************************************************************");
         System.out.println("Nombre: " + this.nombre);
-        for (Nota nota : notas) {
+        for (Nota nota : nota) {
             System.out.println("Título: " + nota.getTitulo() + " Texto: " + nota.getTexto());
             System.out.println("Mes: " + nota.getMes() + " Día: " + nota.getDia());
-            Contacto contacto = nota.getContacto();
+            Contactos contacto = nota.getContactos();
             System.out.println("Contacto: " + contacto.getNombre() + " Localidad: " + contacto.getLocalidad());
             System.out.println("Dirección: " + contacto.getDireccion());
             System.out.println("Teléfonos:");
-            List<String> telefonos = contacto.getTelefonos();
+            List<String> telefonos = Arrays.asList(contacto.getTelefono());
             for (int i = 0; i < telefonos.size(); i++) {
                 System.out.println((i + 1) + "- " + telefonos.get(i));
             }

@@ -1,6 +1,6 @@
-package Prueba;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Contactos {
     private String nombre;

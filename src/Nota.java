@@ -1,4 +1,3 @@
-package Prueba;
 
 public class Nota {
     private String titulo;

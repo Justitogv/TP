@@ -1,10 +1,15 @@
 public class Prueba {
     public void ejecutarPrueba() {
         // Crear 4 instancias de la clase Contacto
-        Contactos c1 = new Contactos("Juan Prueba1", "Santa Fe", "25 de mayo 1111", "0341-111111");
-        Contactos c2 = new Contactos("Pedro Prueba2", "Rosario", "9 de Julio 2222", "0342-222222");
-        Contactos c3 = new Contactos("Maria Prueba3", "Córdoba", "San Martín 3333", "0343-333333");
-        Contactos c4 = new Contactos("Ana Prueba4", "Buenos Aires", "Belgrano 4444", "0344-444444");
+        String[] telefonos1 = {"0341-111111"};
+        String[] telefonos2 = {"0342-222222"};
+        String[] telefonos3 = {"0343-333333"};
+        String[] telefonos4 = {"0344-444444"};
+
+        Contactos c1 = new Contactos("Juan Prueba1", "Santa Fe", "25 de mayo 1111", telefonos1);
+        Contactos c2 = new Contactos("Pedro Prueba2", "Rosario", "9 de Julio 2222", telefonos2);
+        Contactos c3 = new Contactos("Maria Prueba3", "Córdoba", "San Martín 3333", telefonos3);
+        Contactos c4 = new Contactos("Ana Prueba4", "Buenos Aires", "Belgrano 4444", telefonos4);
 
         // Agregar teléfonos a cada contacto
         c1.agregarTelefono("0342", 457737);
