@@ -1,10 +1,14 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Prueba {
     public void ejecutarPrueba() {
-        // Crear 4 instancias de la clase Contacto
-        String[] telefonos1 = {"0341-111111"};
-        String[] telefonos2 = {"0342-222222"};
-        String[] telefonos3 = {"0343-333333"};
-        String[] telefonos4 = {"0344-444444"};
+        // Crear 4 instancias de la clase Contacto con List<String>
+        List<String> telefonos1 = new ArrayList<>(Arrays.asList("0341-111111"));
+        List<String> telefonos2 = new ArrayList<>(Arrays.asList("0342-222222"));
+        List<String> telefonos3 = new ArrayList<>(Arrays.asList("0343-333333"));
+        List<String> telefonos4 = new ArrayList<>(Arrays.asList("0344-444444"));
 
         Contactos c1 = new Contactos("Juan Prueba1", "Santa Fe", "25 de mayo 1111", telefonos1);
         Contactos c2 = new Contactos("Pedro Prueba2", "Rosario", "9 de Julio 2222", telefonos2);
@@ -38,5 +42,17 @@ public class Prueba {
 
         // Listar las notas de la Agenda
         agenda.listarNotas();
+
+        // Probar buscarXcontacto
+        System.out.println("\n--- Buscar notas por contacto 'Juan Prueba1' ---");
+        agenda.buscarXcontacto("Juan Prueba1");
+
+        // Probar listaContactosAlfa
+        System.out.println("\n--- Listar contactos ordenados alfabéticamente ---");
+        agenda.listaContactosAlfa();
+
+        // Probar buscaXtitulos
+        System.out.println("\n--- Buscar notas por títulos que empiezan con 'Reunión' ---");
+        agenda.buscaXtitulos("Reunión");
     }
 }

@@ -1,65 +1,67 @@
-
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class Agenda {
     private String nombre;
-    private ArrayList<Nota> nota;
+    private List<Nota> notas;
 
     public Agenda(String nombre) {
         this.nombre = nombre;
-        this.nota = new ArrayList<>();
+        this.notas = new ArrayList<>();
     }
 
-
-    public String getNombre() {
-        return nombre;
+    public void agregarNota(Nota nota) {
+        notas.add(nota);
+        System.out.println("Nota agregada: " + nota.getTitulo());
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public ArrayList<Nota> getNota() {
-        return nota;
-    }
-
-    public void setNota(ArrayList<Nota> nota) {
-        this.nota = nota;
-    }
-
-    public void agregarNota(Nota nota){
-
-    }
-
-    public void listarNotas(){
-        System.out.println("*****************************************************************");
-        System.out.println("Nombre: " + this.nombre);
-        for (Nota nota : nota) {
-            System.out.println("Título: " + nota.getTitulo() + " Texto: " + nota.getTexto());
-            System.out.println("Mes: " + nota.getMes() + " Día: " + nota.getDia());
-            Contactos contacto = nota.getContactos();
-            System.out.println("Contacto: " + contacto.getNombre() + " Localidad: " + contacto.getLocalidad());
-            System.out.println("Dirección: " + contacto.getDireccion());
-            System.out.println("Teléfonos:");
-            List<String> telefonos = Arrays.asList(contacto.getTelefono());
-            for (int i = 0; i < telefonos.size(); i++) {
-                System.out.println((i + 1) + "- " + telefonos.get(i));
+    public void listarNotas() {
+        if (notas.isEmpty()) {
+            System.out.println("No hay notas en la agenda.");
+        } else {
+            System.out.println("--- Listado de Notas ---");
+            for (Nota nota : notas) {
+                System.out.println(nota);
             }
-            System.out.println("*****************************************************************");
         }
     }
 
-    public void buscarXcontacto(String nombre){
-
+    public void buscarXcontacto(String nombreContacto) {
+        boolean encontrado = false;
+        for (Nota nota : notas) {
+            if (nota.getContacto().getNombre().equalsIgnoreCase(nombreContacto)) {
+                System.out.println(nota);
+                encontrado = true;
+            }
+        }
+        if (!encontrado) {
+            System.out.println("No se encontraron notas para el contacto " + nombreContacto);
+        }
     }
 
-    public void listarContactosAlfa(){
-
+    public void listaContactosAlfa() {
+        List<Contactos> contactos = new ArrayList<>();
+        for (Nota nota : notas) {
+            contactos.add(nota.getContacto());
+        }
+        contactos.sort(Comparator.comparing(Contactos::getNombre));
+        System.out.println("--- Contactos Ordenados Alfabéticamente ---");
+        for (Contactos contacto : contactos) {
+            System.out.println(contacto.getNombre());
+        }
     }
 
-    public void buscarXtitulos(String inicio){
-
+    public void buscaXtitulos(String prefijo) {
+        boolean encontrado = false;
+        for (Nota nota : notas) {
+            if (nota.getTitulo().startsWith(prefijo)) {
+                System.out.println(nota);
+                encontrado = true;
+            }
+        }
+        if (!encontrado) {
+            System.out.println("No se encontraron notas que comiencen con " + prefijo);
+        }
     }
 }
